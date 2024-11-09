@@ -30,10 +30,21 @@ type QueueItem struct {
 	prev *QueueItem
 }
 
+type QueueItem1 struct {
+	item interface{}
+	next *QueueItem1
+}
+
 // Base data structure for Queue
 type Queue struct {
 	current *QueueItem
 	last *QueueItem
+	depth uint64
+}
+
+type Queue1 struct {
+	current *QueueItem1
+	last *QueueItem1
 	depth uint64
 }
 
@@ -44,6 +55,11 @@ func New() *Queue {
 	queue.depth = 0
 
 	return queue
+}
+
+func New1() *Queue1 {
+	q1 := new(Queue1)
+	return q1
 }
 
 // Puts a given item into Queue
@@ -61,6 +77,21 @@ func (queue *Queue) Enqueue(item interface{}) {
 	queue.depth++
 }
 
+func (q1 *Queue1) Enqueue(item interface{}) {
+	if (q1.depth == 0 ){
+		q1.current = &QueueItem1{item:item,next: nil}
+		q1.last = q1.current
+		q1.depth++
+		return
+	}
+	q := &QueueItem1{item, nil}
+	q1.last.next = q
+	q1.last = q
+	q1.depth++
+}
+
+// func (q *)
+
 // Extracts first item from the Queue
 func (queue *Queue) Dequeue() interface{} {
 	if (queue.depth > 0) {
@@ -72,4 +103,11 @@ func (queue *Queue) Dequeue() interface{} {
 	}
 
 	return nil
+}
+func (q1 *Queue1) Dequeue() interface{} {
+	if (q1.depth == 0) {return nil}
+	item := q1.current.item
+	q1.current = q1.current.next
+	q1.depth--
+	return item
 }

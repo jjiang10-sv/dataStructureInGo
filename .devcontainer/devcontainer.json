@@ -1,0 +1,55 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/go
+
+{
+	"name": "Go",
+	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	"image": "mcr.microsoft.com/devcontainers/go:1-1.22-bookworm",
+	"features": {
+		"ghcr.io/devcontainers/features/git:1": {},
+		"ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {}
+	},
+	"runArgs":[ 
+		"--init",
+		"--cap-add=SYS_PTRACE",
+		"--security-opt",
+		"seccomp=unconfined",
+		// Mount .ssh folder to /root/.ssh-localhost
+		"-v","${env:HOME}${env:USERPROFILE}/.ssh:/root/.ssh-localhost",
+		// 挂载本地的 KUBECONFIG 配置文件到容器内
+        "-v", "${env:HOME}${env:USERPROFILE}/.kube:/root/.kube-localhost"
+	],
+
+	
+    "containerEnv": {
+        // [Optional] 默认将同步开关设置成 true，将本地的 KUBECONFIG 配置文件同步到容器内
+        "SYNC_LOCALHOST_KUBECONFIG": "true"
+    },
+
+    // 在创建容器之前，使用 ⁠ initializeCommand ⁠ 命令，合并你本机的所有的 KUBECONFIG 到一个配置文件中（~/.kube/gen-config）
+    // 需要特别注意的是，该参数中的命令，是在你本机环境里执行
+    "initializeCommand": [
+        "${localWorkspaceFolder}/.devcontainer/export-local-kube-config.sh"
+    ],
+
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	"postCreateCommand":[ 
+		"${containerWorkspaceFolder}/.devcontainer/run-devbox.sh"
+	],
+
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	// "features": {},
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	// "postCreateCommand": "go version",
+
+	// Configure tool-specific properties.
+	// "customizations": {},
+
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	"remoteUser": "root"
+}

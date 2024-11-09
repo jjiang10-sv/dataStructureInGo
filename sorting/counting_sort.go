@@ -19,7 +19,9 @@ func getK(arr []int) int {
     
     return k+1
 }
-
+// memory cost increase on the maxVal of the arr
+// use case : smaill value like less than 10
+// time cost O(n)
 func CountingSort(arr []int) {
     k := getK(arr)
     array_of_counts := make([]int, k)
@@ -38,5 +40,24 @@ func CountingSort(arr []int) {
             }
             break
         }
+    }
+}
+
+func CountingSort0428(arr []int, max int) {
+    countsArr := make([]int,max)
+    for _, v := range arr{
+        countsArr[v] +=1
+    }
+    for i,j:=0,0; i<max;i++{
+        for {
+            if countsArr[i] > 0{
+                arr[j] = i
+                j++
+                countsArr[i]--
+                continue
+            }
+            break
+        }
+        
     }
 }

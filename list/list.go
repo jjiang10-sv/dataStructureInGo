@@ -15,7 +15,7 @@ type Item struct {
     prev *Item
     list *List
 }
- 
+
 func New() *List {
     list := &List{}
     list.len = 0

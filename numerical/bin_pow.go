@@ -12,3 +12,27 @@ func BinPow(base int, deg int, rem int) int {
 	}
 	return res
 }
+// bug : int datatype overflow
+func BinPow0520(base int, exp int) int {
+	res := 1
+	for exp > 0 {
+		if (exp & 1) > 0 {
+			res *= base
+		}
+		base *= base
+		exp >>= 1
+	}
+	return res
+}
+
+func BinPowMod0520(base, exp,mod int) int {
+	res := 1
+	for exp > 0 {
+		if (exp & 1) > 0 {
+			res = int(int64(res)*int64(base)%int64(mod))
+		}
+		base = int(int64(base)*int64(base)%int64(mod))
+		exp >>= 1
+	}
+	return res
+}

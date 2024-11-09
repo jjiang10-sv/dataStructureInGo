@@ -1,0 +1,59 @@
+This graph is represented as an **adjacency matrix**, where each cell represents the weight from vertex to vertex . If there’s no direct edge between two vertices, it’s initialized to infinity.
+
+
+
+​	**A**	**B**	**C**	**D**
+
+A	0	3	∞	7
+
+B	8	0	2	∞
+
+C	∞	∞	0	1
+
+D	2	∞	∞	0
+
+
+
+**Step-by-Step Computation**
+
+
+
+​	1.	**Initialization**: Start with the initial matrix, where each cell shows the direct distances. Cells with no direct edge are set to infinity.
+
+​	2.	**Iterate Over Intermediate Vertices**: For each vertex , treat it as an intermediate point and update the shortest distance between each pair of vertices and . For each pair , update:
+
+
+
+​	3.	**Updates**:
+
+​	•	**With** : No updates are necessary because no shorter paths are found through .
+
+​	•	**With** : Update to via (i.e., ).
+
+​	•	**With** : Update to via .
+
+​	•	**With** : Update to via .
+
+
+
+After processing all vertices, the matrix shows the shortest paths between each vertex pair:
+
+
+
+​	**A**	**B**	**C**	**D**
+
+A	0	3	5	6
+
+B	4	0	2	3
+
+C	3	6	0	1
+
+D	2	5	7	0
+
+
+
+**Explanation and Applications**
+
+
+
+The algorithm is effective because it iteratively considers whether including an intermediate vertex can shorten paths. It’s useful in scenarios where finding the shortest path between all node pairs is necessary, such as in network routing and map navigation systems .

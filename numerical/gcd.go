@@ -16,7 +16,8 @@ func GCD(x uint, y uint) uint {
 	if y == 0 {
 		return x
 	}
-
+	// shift is the number of common factor 2 
+	// iterate till either x or y becomes odd
 	for shift := 0; (x|y)&1 == 0; shift++ {
 		x = x >> 1
 		y = y >> 1
@@ -45,4 +46,31 @@ func GCD(x uint, y uint) uint {
 	y = y << shift
 
 	return y
+}
+
+func GCD0521_1(x,y uint) uint{
+	for x != y {
+		if x > y {
+			x -= y
+		}else {
+			y -= x
+		}
+	}
+	return x
+}
+
+func GCD0521_2(x,y uint) uint {
+	for y != 0 {
+		x,y = y,x%y
+	}
+
+	return x
+}
+
+func GCD0521_3(x,y uint) uint {
+
+	if y == 0 {
+		return x
+	}
+	return GCD0521_3(y, x%y)
 }

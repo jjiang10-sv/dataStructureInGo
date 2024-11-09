@@ -78,3 +78,70 @@ func TestList(t *testing.T) {
 	list.delete(1)
 	list.print()
 }
+
+func TestArrStack(t *testing.T) {
+	s := "23*54*+9-"
+	res := PostfixCompute0428(s)
+	fmt.Println(res)
+	
+}
+
+
+func TestInfixToPostfix(t *testing.T) {
+	//	abc*+ea*+f+
+	//s := "a+b*c+e*a+f"
+	//	ab+c*d-e*
+	s := "((a+b)*c-d)*e"
+	res := infixToPostfixP(s)
+	fmt.Println(res)
+	
+}
+
+func TestReverseLinkedList(t *testing.T) {
+	l := newLinkedList(2)
+	l = l.insert(3)
+	l = l.insert(4)
+	l = l.insert(5)
+	l = l.insert(6)
+	l.print()
+	l = l.reverse()
+	l.print()
+}
+
+
+
+func TestItemQueue(t *testing.T) {
+	q := newItemQueue()
+	q.enqueue(1)
+	q.enqueue(3)
+	q.enqueue(2)
+	q.enqueue(6)
+	q.enqueue(4)
+	q.dequeue()
+	fmt.Println(q.getFront())
+	fmt.Println(q.getRear())
+}
+
+
+func TestArrQueue(t *testing.T) {
+	q := newArrQueue(7)
+	q.enqueue(1)
+	q.enqueue(3)
+	q.enqueue(2)
+	q.enqueue(6)
+	q.enqueue(4)
+	q.dequeue()
+	q.dequeue()
+	q.dequeue()
+	q.dequeue()
+	//q.dequeue()
+	q.enqueue(1)
+	q.enqueue(3)
+	q.enqueue(2)
+	q.enqueue(6)
+	q.enqueue(4)
+	fmt.Println(q.getFront())
+	fmt.Println(q.getRear())
+}
+
+

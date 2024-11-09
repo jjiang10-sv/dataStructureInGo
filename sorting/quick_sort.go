@@ -37,10 +37,25 @@ func quick_sort(arr []int) []int {
 
 	return low_part
 }
+func quickSort0430(arr []int) []int{
+	if len(arr) <=1 {
+		return arr
+	}
+	base := arr[rand.Intn(len(arr))]
+	lowpart,midPart,highPart := []int{},[]int{},[]int{}
+	for item,_ := range arr {
+		if item > base{
+			lowpart = append(lowpart, item)
+		} else if item == base {
+			midPart = append(midPart, item)
+		}else {
+			highPart = append(highPart, item)
+		}
+	}
+	lowpart = quickSort0430(lowpart)
+	highPart = quickSort0430(highPart)
+	lowpart = append(lowpart, midPart...)
+	lowpart = append(lowpart, highPart...)
+	return lowpart
 
-//func gotest() {
-//    arr := utils.RandArray(10)
-//    fmt.Println("Initial array is:", arr)
-//    fmt.Println("")
-//    fmt.Println("Sorted array is: ", quick_sort(arr))
-//}
+}

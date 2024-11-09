@@ -14,3 +14,13 @@ func InsertionSort(arr []int) {
 		}
 	}
 }
+
+func InsertionSort0430(arr []int) {
+	for i:=1;i<len(arr);i++{
+		for j:=0; j<i;j++{
+			if arr[j] > arr[i]{
+				arr[j],arr[i] = arr[i],arr[j]
+			}
+		}
+	}
+}

@@ -25,7 +25,10 @@
 
 package queue
 
-import "testing"
+import (
+	"fmt"
+	"testing"
+)
 
 func TestQueue(t *testing.T) {
 	var queue *Queue = New()
@@ -39,9 +42,25 @@ func TestQueue(t *testing.T) {
 	for i := 1; i < 6; i++ {
 		item := queue.Dequeue()
 
-		if (item != i) {
+		if item != i {
 			t.Error("TestQueue failed...", i)
 		}
 	}
+}
 
+func TestQueue1(t *testing.T) {
+	var q1 *Queue1 = New1()
+	arr1 := [6]int{1, 2, 3, 4, 5, 6}
+	for _, item := range arr1 {
+		q1.Enqueue(item)
+	}
+
+	for i := 1; i <= len(arr1); i++ {
+		item := q1.Dequeue()
+		fmt.Println(item, i)
+
+		if item != i {
+			t.Error("TestQueue1 failed...", i)
+		}
+	}
 }

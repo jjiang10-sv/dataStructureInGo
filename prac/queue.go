@@ -64,3 +64,123 @@ func (q *queue) Dequeue() interface{}{
 	return data.item
 }
 
+type item struct{
+	data int
+	next *item
+}
+
+type itemQueue struct{
+	depth uint
+	front *item
+	rear *item
+}
+// O(1)
+func newItemQueue() *itemQueue {
+	return new(itemQueue)
+}
+
+func (q *itemQueue) enqueue(i int) {
+	// insert to the front
+	q.depth++
+	node := item{
+		data:i,
+	}
+	if q.rear == nil{
+		q.front = &node
+		q.rear = &node
+		return
+	}
+	q.rear.next = &node
+	q.rear = &node
+}
+func (q *itemQueue) dequeue() {
+	if q.front == nil{
+		panic("queue is empty")
+	}
+	q.front = q.front.next
+	q.depth--
+}
+
+func (q *itemQueue) getFront() *item{
+	return q.front
+}
+
+func (q *itemQueue) getRear() *item{
+	return q.rear
+}
+
+
+func (q *itemQueue) isEmpty() bool{
+	return q.depth == 0
+}
+
+type arrQueue struct {
+	front int
+	rear int
+	depth uint
+	max uint
+	data []int
+	
+}
+
+func newArrQueue(max uint) *arrQueue {
+	res := new(arrQueue)
+	res.max = max
+	res.front = -1
+	res.rear = -1
+	res.data = make([]int, max)
+	return res
+}
+
+
+
+func (q *arrQueue) enqueue(i int) {
+	// insert to the front
+	if q.depth + 1 > q.max{
+		panic("overflow the queue")
+	}
+	if q.front == -1 {
+		q.front++
+		q.rear++
+		q.depth++
+		return
+	}
+	q.rear = (q.rear+1)%int(q.max)
+	// q.front = (q.rear-int(q.depth))
+	// if q.front <0 {
+	// 	q.front += int(q.max)
+	// }
+	q.data[q.rear] = i
+	q.depth++
+	
+}
+func (q *arrQueue) dequeue() {
+	if q.front == -1 {
+		panic("can not dequeue from empty queue")
+	}
+	q.depth--
+	if q.depth == 0{
+		q.front = -1
+		q.rear = -1
+		return
+	}
+	q.front = (q.rear-int(q.depth)+1)
+	if q.front <0 {
+		q.front += int(q.max)
+	}
+	
+
+}
+
+func (q *arrQueue) getFront() int{
+	return q.data[q.front]
+}
+
+func (q *arrQueue) getRear() int{
+	return q.data[q.rear]
+}
+
+
+func (q *arrQueue) isEmpty() bool{
+	return q.depth == 0
+}

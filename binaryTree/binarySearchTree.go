@@ -40,12 +40,12 @@ func maxDepth(root *Node) ([]string, []string) {
 	maxDepthHelper = func(root *Node, ctx context.Context, isLeft bool, wg *sync.WaitGroup, res *[][]string) {
 		wg.Add(1)
 		defer wg.Done()
-	
+
 		val := ctx.Value(ctxPath).([]string)
-	
+
 		if isLeft {
 			val = append(val, "L")
-	
+
 		} else {
 			val = append(val, "R")
 		}
@@ -63,7 +63,7 @@ func maxDepth(root *Node) ([]string, []string) {
 		maxDepthHelper(root.Left, ctxWithValue, true, wg, res)
 		maxDepthHelper(root.Right, ctxWithValue, false, wg, res)
 		//return
-	
+
 	}
 	wg := sync.WaitGroup{}
 	res := [][]string{}
@@ -83,7 +83,6 @@ func maxDepth(root *Node) ([]string, []string) {
 		}
 	}
 	return minDepth, maxDepth
-
 }
 
 func middleOrderWalk(root *Node) {
@@ -123,7 +122,7 @@ func levelWalk(root *Node) {
 			return
 		}
 		nextLevel := []*Node{}
-		for i:=0; i< len(currentLevel); i++ {
+		for i := 0; i < len(currentLevel); i++ {
 			tmp := currentLevel[i]
 			if tmp.Left != nil {
 				nextLevel = append(nextLevel, tmp.Left)
@@ -131,7 +130,7 @@ func levelWalk(root *Node) {
 			if tmp.Right != nil {
 				nextLevel = append(nextLevel, tmp.Right)
 			}
-			fmt.Print(" ",tmp.num)
+			fmt.Print(" ", tmp.num)
 		}
 		tmp(nextLevel)
 	}
