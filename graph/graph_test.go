@@ -79,7 +79,8 @@ func Test_shortestPath(t *testing.T) {
 
 	itemGraph := CreateGraph(inputGraph)
 
-	getShortestPath(&Node{"A"}, &Node{"E"}, itemGraph)
+	//getShortestPath(&Node{"A"}, &Node{"E"}, itemGraph)
+	getShortestPath1(&Node{"A"}, &Node{"E"}, itemGraph)
 
 }
 
@@ -100,5 +101,10 @@ func TestHoffmanCodes(t *testing.T) {
 	}
 	coded := NewHoffmanCodes(res).code("john")
 	println(coded)
+
+}
+
+func TestAllPairShortestPath(t *testing.T) {
+	allPairShortestPath()
 
 }

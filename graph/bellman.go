@@ -31,6 +31,7 @@ func BellmanFord(vertices int, edges []EdgeBell, src int) ([]int, error) {
 	// Check for negative-weight cycles
 	for _, edge := range edges {
 		if distances[edge.source] != math.MaxInt32 && distances[edge.source]+edge.weight < distances[edge.destination] {
+			fmt.Println("affected nodes", edge.source, edge.destination)
 			return nil, fmt.Errorf("graph contains a negative weight cycle")
 		}
 	}

@@ -206,3 +206,16 @@ Complexity
 
 	•	Time Complexity: ￼, where V is the number of vertices.
 	•	Space Complexity: ￼, since it stores all-pairs distances in a matrix.
+
+In the Bellman-Ford algorithm, we require |V| - 1 iterations over all edges to guarantee that we find the shortest paths in a graph with |V| vertices. Each iteration ensures that distance values propagate through the graph, accounting for the paths created by edges.
+
+Why |V| - 1 Iterations?
+
+This is because a shortest path in a graph with no cycles has at most |V| - 1 edges, where |V| is the number of vertices. For a graph with edges forming paths of up to |V| - 1 steps, the Bellman-Ford algorithm iteratively updates the shortest path estimate for each vertex, ensuring that each possible vertex-to-vertex path is accounted for.
+
+Handling Negative Cycles
+
+If a graph contains a negative cycle, additional iterations are required to propagate the “minus infinity” values from this cycle through the graph. After the initial |V| - 1 iterations, any further updates indicate the presence of a negative-weight cycle, as they continue decreasing the shortest path estimates beyond the feasible |V| - 1 steps. In this case:
+
+	•	The algorithm detects these additional changes to recognize the negative cycles.
+	•	This helps identify which vertices and edges are affected by the cycle, as any reachable vertices continue to have their distances lowered.

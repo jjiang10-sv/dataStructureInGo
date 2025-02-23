@@ -146,19 +146,20 @@ func getShortestPath(startNode *Node, endNode *Node, g *ItemGraph) ([]string, in
 		visited[v.Node.Value] = true
 		near := g.Edges[*v.Node]
 
-		for _, val := range near {
-			if !visited[val.Node.Value] {
-				if dist[v.Node.Value]+val.Weight < dist[val.Node.Value] {
+		for _, edge := range near {
+			if !visited[edge.Node.Value] {
+				if dist[v.Node.Value]+edge.Weight < dist[edge.Node.Value] {
+					updatedDist := dist[v.Node.Value] + edge.Weight
 					store := Vertex{
-						Node:     val.Node,
-						Distance: dist[v.Node.Value] + val.Weight,
+						Node:     edge.Node,
+						Distance: updatedDist,
 					}
-					dist[val.Node.Value] = dist[v.Node.Value] + val.Weight
-					//prev[val.Node.Value] = fmt.Sprintf("->%s", v.Node.Value)
-					prev[val.Node.Value] = v.Node.Value
+					dist[edge.Node.Value] = updatedDist
+					//prev[edge.Node.Value] = fmt.Sprintf("->%s", v.Node.Value)
+					prev[edge.Node.Value] = v.Node.Value
 					pq.Enqueue(store)
 				}
-				//visited[val.Node.value] = true
+				//visited[edge.Node.Value] = true
 			}
 		}
 	}
