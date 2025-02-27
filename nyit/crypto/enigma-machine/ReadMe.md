@@ -56,7 +56,7 @@ docker build -t your_image_name .
 After the image is built successfully, you can run a container from that image using the following command:
 
 ```bash
-docker run --rm your_image_name "Your message here"
+docker run --rm -it your_image_name "Your message here"
 ```
 
 - Replace `your_image_name` with the name you used in the build step (e.g., `enigma-machine`).
@@ -69,12 +69,11 @@ docker run --rm your_image_name "Your message here"
    ```bash
    cd nyit/crypto/enigma-machine/
    docker build -t enigma-machine .
-   docker build -t enigma .
    ```
 
 2. **Run the Container:**
    ```bash
-   docker run --rm enigma "Hello, World!"
+   docker run --rm -it enigma-machine /bin/bash
    ```
 
 ### Additional Notes

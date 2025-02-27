@@ -56,8 +56,8 @@ class EnigmaMachine:
     def showState(self):
         print("outer cylinder"+ "     " + "inner cylinder")
         for char1, char2, char3, char4 in zip(self.right_rotor.left, self.left_rotor.right, self.left_rotor.left, self.reflector.right):
-            print(char3 + ":" + char4 + "            " +char1 + ":" + char2)
-        
+            print(char3 + ":" + char4 + "                " +char1 + ":" + char2)
+        print("\n")
 
 
 rotor1 = Rotor("DMTWSILRUYQNKFEJCAZBPGXOHV", "Q")
