@@ -33,10 +33,10 @@ class EnigmaMachine:
             char = self.keyboard.map_left_right(charIndex)
             ciphertext += char
 
-            print("left rotor before rotate state" + " " + self.left_rotor.right)
-            print("left rotor before rotate state" + " " + self.left_rotor.left)
-            print("right rotor before rotate state" + " " + self.right_rotor.right)
-            print("right rotor before rotate state" + " " + self.right_rotor.left)
+            # print("left rotor before rotate state" + " " + self.left_rotor.right)
+            # print("left rotor before rotate state" + " " + self.left_rotor.left)
+            # print("right rotor before rotate state" + " " + self.right_rotor.right)
+            # print("right rotor before rotate state" + " " + self.right_rotor.left)
             
 
             self.right_rotor.rotate()
@@ -45,30 +45,45 @@ class EnigmaMachine:
             if self.right_rotor.right[25] == self.right_rotor.notch:
                 self.left_rotor.rotate()
             
-            print(initialChar + ": " + char)
-            print("left rotor before rotate state" + " " + self.left_rotor.right)
-            print("left rotor before rotate state" + " " + self.left_rotor.left)
-            print("right rotor before rotate state" + " " + self.right_rotor.right)
-            print("right rotor before rotate state" + " " + self.right_rotor.left)
-            print("\n") 
-            
+            # print(initialChar + ": " + char)
+            # print("left rotor before rotate state" + " " + self.left_rotor.right)
+            # print("left rotor before rotate state" + " " + self.left_rotor.left)
+            # print("right rotor before rotate state" + " " + self.right_rotor.right)
+            # print("right rotor before rotate state" + " " + self.right_rotor.left)
+            # print("\n") 
         return ciphertext
    
-def main(message):
-    rotor1 = Rotor("DMTWSILRUYQNKFEJCAZBPGXOHV", "Q")
-    rotor2 = Rotor("HQZGPJTMOBLNCIFDYAWVEUSRKX", "Z")
-    switchboard = SwitchBoard()
-    reflector = Reflector()
-    keyboard = Keyboard()
+    def showState(self):
+        print("outer cylinder"+ "     " + "inner cylinder")
+        for char1, char2, char3, char4 in zip(self.right_rotor.left, self.left_rotor.right, self.left_rotor.left, self.reflector.right):
+            print(char3 + ":" + char4 + "            " +char1 + ":" + char2)
+        
 
-    em = EnigmaMachine(rotor1, rotor2, switchboard, reflector, keyboard)
+
+rotor1 = Rotor("DMTWSILRUYQNKFEJCAZBPGXOHV", "Q")
+rotor2 = Rotor("HQZGPJTMOBLNCIFDYAWVEUSRKX", "Z")
+switchboard = SwitchBoard()
+reflector = Reflector()
+keyboard = Keyboard()
+
+em = EnigmaMachine(rotor1, rotor2, switchboard, reflector, keyboard)
+
+while(1):
+    message = input("Enter your text to be encrypted (Type exit to exit the program): ")
+
+    if message == "exit":
+        break
+    elif message == "showstate":
+        em.showState()
+        continue
+    
     result = em.encrypt(message)
-    print(result)
+    print("The Encrypted Text is: " + result)
 
 # python enigma_machine.py "asds"
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Encrypt a message using the Enigma machine.")
-    parser.add_argument("message", type=str, help="The message to encrypt")
-    args = parser.parse_args()
+# if __name__ == "__main__":
+#     parser = argparse.ArgumentParser(description="Encrypt a message using the Enigma machine.")
+#     parser.add_argument("message", type=str, help="The message to encrypt")
+#     args = parser.parse_args()
     
-    main(args.message)  # Call the main function with the provided message
+#     main(args.message)  # Call the main function with the provided message
