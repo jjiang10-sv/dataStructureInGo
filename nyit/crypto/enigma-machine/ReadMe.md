@@ -1,33 +1,5 @@
 # Rotor Machine Cipher Implementation
 
-## How to run the code
-
-### Encryption
-
-- To encrypt a text, simply type the text into the prompt and hit Enter
-
-#### Example:
-
-![encryption output](encryption.png)
-
-### Print the cylinder's state
-
-- To check the cylinder's state, type "showstate" into the prompt and hit Enter
-
-#### Example:
-
-![showstate output](showstate.png)
-
-### Exit the program
-
-- To exit the program, type "exit" into the prompt and hit enter.
-
-#### Example:
-
-![exit output](exit.png)
-
----
-
 ## How to Run Docker
 
 To run a Dockerfile, you need to follow a series of steps that involve building a Docker image from the Dockerfile and then running a container based on that image. Here’s a step-by-step guide:
@@ -104,3 +76,31 @@ docker run --rm -it your_image_name "Your message here"
   ```
 
 By following these steps, you should be able to successfully run your Dockerfile and execute your command-line tool within a Docker container.
+
+---
+
+## How to run the code
+
+### Encryption
+
+- To encrypt a text, simply type the text into the prompt and hit Enter
+
+#### Example:
+
+![encryption output](encryption.png)
+
+### Print the cylinder's state
+
+- To check the cylinder's state, type "showstate" into the prompt and hit Enter
+
+#### Example:
+
+![showstate output](showstate.png)
+
+### Exit the program
+
+- To exit the program, type "exit" into the prompt and hit enter.
+
+#### Example:
+
+![exit output](exit.png)
