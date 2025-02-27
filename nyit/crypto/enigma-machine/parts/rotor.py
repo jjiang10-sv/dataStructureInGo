@@ -26,10 +26,10 @@ class Rotor:
         print(self.left)
         print(self.right)
 
-left_rotor = Rotor("DMTWSILRUYQNKFEJCAZBPGXOHV", "Q")
-right_rotor = Rotor("HQZGPJTMOBLNCIFDYAWVEUSRKX", "R")
+# left_rotor = Rotor("DMTWSILRUYQNKFEJCAZBPGXOHV", "Q")
+# right_rotor = Rotor("HQZGPJTMOBLNCIFDYAWVEUSRKX", "R")
 
-right_rotor.rotate()
-nextindex = right_rotor.map_right_left(17)
+# right_rotor.rotate()
+# nextindex = right_rotor.map_right_left(17)
 
-print(nextindex)
+# print(nextindex)
