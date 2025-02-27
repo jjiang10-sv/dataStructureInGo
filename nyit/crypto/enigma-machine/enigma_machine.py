@@ -1,9 +1,9 @@
 import argparse
 
-from parts.keyboard import Keyboard
-from parts.rotor import Rotor
-from parts.reflector import Reflector
-from parts.switch_board import SwitchBoard
+from keyboard import Keyboard
+from rotor import Rotor
+from reflector import Reflector
+from switch_board import SwitchBoard
 
 class EnigmaMachine:
     def __init__(self, leftrotor, rightrotor, switchboard, reflector, keyboard):
