@@ -1,4 +1,35 @@
-## Run Docker
+# Rotor Machine Cipher Implementation
+
+## How to run the code
+
+### Encryption
+
+- To encrypt a text, simply type the text into the prompt and hit Enter
+
+#### Example:
+
+![encryption output](encryption.png)
+
+### Print the cylinder's state
+
+- To check the cylinder's state, type "showstate" into the prompt and hit Enter
+
+#### Example:
+
+![showstate output](showstate.png)
+
+### Exit the program
+
+- To exit the program, type "exit" into the prompt and hit enter.
+
+#### Example:
+
+![exit output](exit.png)
+
+---
+
+## How to Run Docker
+
 To run a Dockerfile, you need to follow a series of steps that involve building a Docker image from the Dockerfile and then running a container based on that image. Here’s a step-by-step guide:
 
 ### Step 1: Install Docker
@@ -34,10 +65,11 @@ docker run --rm your_image_name "Your message here"
 ### Example Commands
 
 1. **Build the Image:**
+
    ```bash
    cd nyit/crypto/enigma-machine/
    docker build -t enigma-machine .
-   docker build -t enigma . 
+   docker build -t enigma .
    ```
 
 2. **Run the Container:**
@@ -48,19 +80,23 @@ docker run --rm your_image_name "Your message here"
 ### Additional Notes
 
 - **List Docker Images:** You can list all Docker images on your machine with:
+
   ```bash
   docker images
   ```
 
 - **List Running Containers:** To see running containers, use:
+
   ```bash
   docker ps
   ```
 
 - **Stop a Running Container:** If you need to stop a running container, you can use:
+
   ```bash
   docker stop container_id
   ```
+
   Replace `container_id` with the actual ID of the container.
 
 - **Remove an Image:** If you want to remove an image, use:

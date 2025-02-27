@@ -70,6 +70,7 @@ em = EnigmaMachine(rotor1, rotor2, switchboard, reflector, keyboard)
 
 while(1):
     message = input("Enter your text to be encrypted (Type exit to exit the program): ")
+    print("\n")
 
     if message == "exit":
         break
@@ -78,7 +79,9 @@ while(1):
         continue
     
     result = em.encrypt(message)
-    print("The Encrypted Text is: " + result)
+    print("The Encrypted Text is: " + result + "\n")
+
+print("Thank you for using the Enigma Machine" + "\n")
 
 # python enigma_machine.py "asds"
 # if __name__ == "__main__":
