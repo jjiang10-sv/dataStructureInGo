@@ -12,6 +12,7 @@ require (
 
 require (
 	github.com/davecgh/go-spew v1.1.1 // indirect
+	github.com/gorilla/securecookie v1.1.2
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	golang.org/x/sys v0.0.0-20190412213103-97732733099d // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect

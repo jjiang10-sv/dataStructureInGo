@@ -51,6 +51,7 @@ class EnigmaMachine:
             print("right rotor before rotate state" + " " + self.right_rotor.right)
             print("right rotor before rotate state" + " " + self.right_rotor.left)
             print("\n") 
+            
         return ciphertext
    
 def main(message):

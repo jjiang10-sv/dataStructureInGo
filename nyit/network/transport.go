@@ -273,6 +273,7 @@ func pipelineGoBackNReceiver() {
 }
 
 func sender3_0() {
+	//aa := make(map[int]string)
 	conn, err := net.Dial("udp", serverAddr)
 	if err != nil {
 		fmt.Println("Error connecting:", err)
